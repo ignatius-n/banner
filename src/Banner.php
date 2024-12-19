@@ -26,7 +26,18 @@ class Banner implements Wireable
         public ?string $icon_color,
         public ?string $render_location,
         public ?array $scope,
-    ) {}
+        public ?string $link_url,
+        public ?string $link_text,
+        public ?string $link_click_action,
+        public ?string $link_button_style,
+        public ?string $link_button_color,
+        public ?string $link_text_color,
+        public ?string $link_active,
+        public ?bool $link_open_in_new_tab,
+        public ?string $link_button_icon,
+        public ?string $link_button_icon_color,
+    ) {
+    }
 
     public static function fromData(BannerData $data): static
     {
@@ -46,7 +57,17 @@ class Banner implements Wireable
             $data->text_color,
             $data->icon_color,
             $data->render_location,
-            $data->scope
+            $data->scope,
+            $data->link_url,
+            $data->link_text,
+            $data->link_click_action,
+            $data->link_button_style,
+            $data->link_button_color,
+            $data->link_text_color,
+            $data->link_active,
+            $data->link_open_in_new_tab,
+            $data->link_button_icon,
+            $data->link_button_icon_color,
         );
     }
 
@@ -69,6 +90,16 @@ class Banner implements Wireable
             $value['icon_color'],
             $value['render_location'],
             $value['scope'],
+            $value['link_url'],
+            $value['link_text'],
+            $value['link_click_action'],
+            $value['link_button_style'],
+            $value['link_button_color'],
+            $value['link_text_color'],
+            $value['link_active'],
+            $value['link_open_in_new_tab'],
+            $value['link_button_icon'],
+            $value['link_button_icon_color'],
         );
     }
 
@@ -79,18 +110,28 @@ class Banner implements Wireable
             'name' => $this->name,
             'content' => $this->content,
             'is_active' => $this->is_active,
-            'active_since' => $this->active_since,
-            'icon' => $this->icon,
+            'active_since' => $this->active_since ?? null,
+            'icon' => $this->icon ?? null,
             'background_type' => $this->background_type,
             'start_color' => $this->start_color,
-            'end_color' => $this->end_color,
-            'start_time' => $this->start_time,
-            'end_time' => $this->end_time,
+            'end_color' => $this->end_color ?? null,
+            'start_time' => $this->start_time ?? null,
+            'end_time' => $this->end_time ?? null,
             'can_be_closed_by_user' => $this->can_be_closed_by_user,
-            'text_color' => $this->text_color,
-            'icon_color' => $this->icon_color,
-            'render_location' => $this->render_location,
-            'scope' => $this->scope,
+            'text_color' => $this->text_color ?? null,
+            'icon_color' => $this->icon_color ?? null,
+            'render_location' => $this->render_location ?? null,
+            'scope' => $this->scope ?? null,
+            'link_url' => $this->link_url ?? null,
+            'link_text' => $this->link_text ?? null,
+            'link_click_action' => $this->link_click_action ?? null,
+            'link_button_style' => $this->link_button_style ?? null,
+            'link_button_color' => $this->link_button_color ?? null,
+            'link_text_color' => $this->link_text_color ?? null,
+            'link_active' => $this->link_active ?? null,
+            'link_open_in_new_tab' => $this->link_open_in_new_tab ?? null,
+            'link_button_icon' => $this->link_button_icon ?? null,
+            'link_button_icon_color' => $this->link_button_icon_color ?? null,
         ];
     }
 
@@ -149,7 +190,9 @@ class Banner implements Wireable
         return ! is_null($this->start_time) && ! is_null($this->end_time);
     }
 
-    public function isScheduled(): bool {}
+    public function isScheduled(): bool
+    {
+    }
 
     public function getLocation(): string
     {

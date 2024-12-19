@@ -17,7 +17,9 @@ use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -41,7 +43,7 @@ class BannerManagerPage extends Page
     public ?array $data = [];
 
     /**
-     * @var BannerContainer[]
+     * @var Banner[]
      */
     public $banners = [];
 
@@ -337,6 +339,75 @@ class BannerManagerPage extends Page
                                         ->visible(fn ($get) => $get('background_type') === 'gradient'),
                                 ])
                                 ->columns(3),
+                        ]),
+                    Tab::make('Link')
+                        ->icon('heroicon-m-link')
+                        ->schema([
+                            Toggle::make('link_active')
+                                ->label('Active')
+                                ->live(),
+                            Fieldset::make('Config')
+                                ->hidden(fn (Get $get): bool => ! $get('link_active'))
+                                ->schema([
+                                    TextInput::make('link_url')
+                                        ->required()
+                                        ->url()
+                                        ->columnSpanFull()
+                                        ->suffixIcon('heroicon-m-link'),
+                                    Checkbox::make('link_open_in_new_tab')
+                                        ->required()
+                                        ->label('Open link in new tab')
+                                        ->columnSpan('full'),
+                                    ToggleButtons::make('link_click_action')
+                                        ->default('clickable_banner')
+                                        ->label('Mode')
+                                        ->live()
+                                        ->required()
+                                        ->options([
+                                            'clickable_banner' => 'Clickable banner',
+                                            'button' => 'button',
+                                        ])
+                                        ->icons([
+                                            'clickable_banner' => 'heroicon-o-cursor-arrow-rays',
+                                            'button' => 'heroicon-o-stop',
+                                        ])
+                                        ->grouped(),
+                                    TextInput::make('link_text')
+                                        ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner')
+                                        ->required()
+                                        ->columnSpanFull(),
+                                    ToggleButtons::make('link_button_style')
+                                        ->columnSpanFull()
+                                        ->live()
+                                        ->default('primary')
+                                        ->label('Button styling')
+                                        ->required()
+                                        ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner')
+                                        ->options([
+                                            'button' => 'Button',
+                                            'link' => 'Link',
+                                        ])
+                                        ->grouped(),
+                                    ColorPicker::make('link_button_color')
+                                        ->required()
+                                        ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner' || $get('link_button_style') === 'link')
+                                        ->label('Button color')
+                                        ->default('#F59E0C'),
+                                    ColorPicker::make('link_text_color')
+                                        ->required()
+                                        ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner')
+                                        ->label('Text color')
+                                        ->default('#F59E0C'),
+                                    TextInput::make('link_button_icon')
+                                        ->label('Link icon')
+                                        ->default('heroicon-m-megaphone')
+                                        ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner')
+                                        ->placeholder('heroicon-m-wrench'),
+                                    ColorPicker::make('link_button_icon_color')
+                                        ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner')
+                                        ->label('Link icon color')
+                                        ->default('#F59E0C'),
+                                ]),
                         ]),
                     Tab::make(__('banner::form.tabs.scheduling'))
                         ->reactive()
