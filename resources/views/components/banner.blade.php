@@ -24,7 +24,7 @@
             }
         @endphp
         <div
-            @if($target)
+            @if ($target)
                 @click="openLink()"
                 class="hover:opacity-80 cursor-pointer"
                 x-data="{
@@ -92,10 +92,10 @@
                     </div>
                 </div>
                 <div class="col-span-2 flex justify-end items-center">
-                    @if($banner->link_active && $banner->link_click_action === "button")
+                    @if ($banner->link_active && $banner->link_click_action === "button")
                         <div class="mr-4 flex space-x-2 hover:opacity-75">
                             <div>
-                                @if($banner->link_button_style === 'button')
+                                @if ($banner->link_button_style === 'button')
                                     <div>
                                         <a
                                             href="{{ $banner->link_url }}"
@@ -106,7 +106,7 @@
 
                                             {{ $banner->link_text }}
 
-                                            @if($banner->link_button_icon)
+                                            @if ($banner->link_button_icon)
                                                 <x-filament::icon
                                                     alias="banner::close"
                                                     :icon="$banner->link_button_icon"
@@ -119,7 +119,7 @@
                                     </div>
                                 @endif
 
-                                @if($banner->link_button_style === 'link')
+                                @if ($banner->link_button_style === 'link')
                                     <div>
                                         <a
                                             style="color: {{ $banner->link_text_color ?? '#FFFFFF' }};"
@@ -130,7 +130,7 @@
 
                                             {{ $banner->link_text }}
 
-                                            @if($banner->link_button_icon)
+                                            @if ($banner->link_button_icon)
                                                 <x-filament::icon
                                                     alias="banner::close"
                                                     :icon="$banner->link_button_icon"

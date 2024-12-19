@@ -36,8 +36,7 @@ class Banner implements Wireable
         public ?bool $link_open_in_new_tab,
         public ?string $link_button_icon,
         public ?string $link_button_icon_color,
-    ) {
-    }
+    ) {}
 
     public static function fromData(BannerData $data): static
     {
@@ -190,9 +189,7 @@ class Banner implements Wireable
         return ! is_null($this->start_time) && ! is_null($this->end_time);
     }
 
-    public function isScheduled(): bool
-    {
-    }
+    public function isScheduled(): bool {}
 
     public function getLocation(): string
     {

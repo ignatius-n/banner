@@ -31,8 +31,7 @@ class BannerData
         public ?bool $link_open_in_new_tab,
         public ?string $link_button_icon,
         public ?string $link_button_icon_color,
-    ) {
-    }
+    ) {}
 
     public static function fromArray(array $data): BannerData
     {
