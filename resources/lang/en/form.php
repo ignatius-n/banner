@@ -64,6 +64,18 @@ return [
         'start_time_reset' => 'Reset Start Time',
         'end_time' => 'End Time',
         'end_time_reset' => 'Reset End Time',
+        'link' => 'Link',
+        'link_url' => 'Link URL',
+        'link_open_in_new_tab' => 'Open link in new tab',
+        'link_click_action' => 'Link click action',
+        'link_text' => 'Link text',
+        'link_button_style' => 'Link button style',
+        'link_button_color' => 'Link button color',
+        'link_text_color' => 'Link text color',
+        'link_button_icon' => 'Link button icon',
+        'link_button_icon_color' => 'Link button icon color',
+        'link_config' => 'Link config',
+        'link_button_config' => 'Button config',
     ],
     'badges' => [
         'scheduling_status' => [

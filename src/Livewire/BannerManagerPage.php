@@ -340,25 +340,30 @@ class BannerManagerPage extends Page
                                 ])
                                 ->columns(3),
                         ]),
+                    // TODO: add translations and documentation
                     Tab::make('Link')
+                        ->label(__('banner::form.fields.link'))
                         ->icon('heroicon-m-link')
                         ->schema([
                             Toggle::make('link_active')
-                                ->label('Active')
+                                ->label(__('banner::form.fields.is_active'))
                                 ->live(),
                             Fieldset::make('Config')
                                 ->hidden(fn (Get $get): bool => ! $get('link_active'))
                                 ->schema([
                                     TextInput::make('link_url')
+                                        ->label(__('banner::form.fields.link_url'))
                                         ->required()
                                         ->url()
                                         ->columnSpanFull()
                                         ->suffixIcon('heroicon-m-link'),
                                     Checkbox::make('link_open_in_new_tab')
+                                        ->label(__('banner::form.fields.link_open_in_new_tab'))
                                         ->required()
                                         ->label('Open link in new tab')
                                         ->columnSpan('full'),
                                     ToggleButtons::make('link_click_action')
+                                        ->label(__('banner::form.fields.link_click_action'))
                                         ->default('clickable_banner')
                                         ->label('Mode')
                                         ->live()
@@ -373,10 +378,12 @@ class BannerManagerPage extends Page
                                         ])
                                         ->grouped(),
                                     TextInput::make('link_text')
+                                        ->label(__('banner::form.fields.link_text'))
                                         ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner')
                                         ->required()
                                         ->columnSpanFull(),
                                     ToggleButtons::make('link_button_style')
+                                        ->label(__('banner::form.fields.link_button_style'))
                                         ->columnSpanFull()
                                         ->live()
                                         ->default('primary')
@@ -389,21 +396,25 @@ class BannerManagerPage extends Page
                                         ])
                                         ->grouped(),
                                     ColorPicker::make('link_button_color')
+                                        ->label(__('banner::form.fields.link_button_color'))
                                         ->required()
                                         ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner' || $get('link_button_style') === 'link')
                                         ->label('Button color')
                                         ->default('#F59E0C'),
                                     ColorPicker::make('link_text_color')
+                                        ->label(__('banner::form.fields.link_text_color'))
                                         ->required()
                                         ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner')
                                         ->label('Text color')
                                         ->default('#F59E0C'),
                                     TextInput::make('link_button_icon')
+                                        ->label(__('banner::form.fields.link_button_icon'))
                                         ->label('Link icon')
                                         ->default('heroicon-m-megaphone')
                                         ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner')
                                         ->placeholder('heroicon-m-wrench'),
                                     ColorPicker::make('link_button_icon_color')
+                                        ->label(__('banner::form.fields.link_button_icon_color'))
                                         ->hidden(fn (Get $get): bool => $get('link_click_action') === 'clickable_banner')
                                         ->label('Link icon color')
                                         ->default('#F59E0C'),
