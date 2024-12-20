@@ -8,7 +8,7 @@ use Kenepa\Banner\ValueObjects\BannerData;
 
 beforeEach(function () {
     app()->singleton(BannerStorage::class, function () {
-        return new CacheStorageService();
+        return new CacheStorageService;
     });
 });
 

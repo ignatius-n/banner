@@ -72,7 +72,7 @@ class BannerServiceProvider extends PackageServiceProvider
         }
 
         // Testing
-        Testable::mixin(new TestsBanner());
+        Testable::mixin(new TestsBanner);
     }
 
     protected function getAssetPackageName(): ?string
