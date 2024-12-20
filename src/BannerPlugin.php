@@ -60,10 +60,10 @@ class BannerPlugin implements Plugin
 
         app()->singleton(BannerStorage::class, function () {
             if ($this->persistBannersInDatabase) {
-                return new DatabaseStorageService();
+                return new DatabaseStorageService;
             }
 
-            return new CacheStorageService();
+            return new CacheStorageService;
         });
     }
 

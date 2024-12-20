@@ -11,7 +11,7 @@ use function Pest\Laravel\assertDatabaseCount;
 
 beforeEach(function () {
     app()->singleton(BannerStorage::class, function () {
-        return new DatabaseStorageService();
+        return new DatabaseStorageService;
     });
 });
 

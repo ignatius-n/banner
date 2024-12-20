@@ -21,9 +21,18 @@ class BannerData
         public ?string $icon_color,
         public ?string $render_location,
         public ?array $scope,
+        public ?string $link_url,
+        public ?string $link_text,
+        public ?string $link_click_action,
+        public ?string $link_button_style,
+        public ?string $link_button_color,
+        public ?string $link_text_color,
+        public ?string $link_active,
+        public ?bool $link_open_in_new_tab,
+        public ?string $link_button_icon,
+        public ?string $link_button_icon_color,
     ) {}
 
-    // Todo: add defaults to all
     public static function fromArray(array $data): BannerData
     {
         return new static(
@@ -43,6 +52,16 @@ class BannerData
             $data['icon_color'] ?? null,
             $data['render_location'] ?? null,
             $data['scope'] ?? null,
+            $data['link_url'] ?? null,
+            $data['link_text'] ?? null,
+            $data['link_click_action'] ?? null,
+            $data['link_button_style'] ?? null,
+            $data['link_button_color'] ?? null,
+            $data['link_text_color'] ?? null,
+            $data['link_active'] ?? null,
+            $data['link_open_in_new_tab'] ?? null,
+            $data['link_button_icon'] ?? null,
+            $data['link_button_icon_color'] ?? null,
         );
     }
 
@@ -65,6 +84,16 @@ class BannerData
             'icon_color' => $this->icon_color,
             'render_location' => $this->render_location,
             'scope' => $this->scope,
+            'link_url' => $this->link_url,
+            'link_text' => $this->link_text,
+            'link_click_action' => $this->link_click_action,
+            'link_button_style' => $this->link_button_style,
+            'link_button_color' => $this->link_button_color,
+            'link_text_color' => $this->link_text_color,
+            'link_active' => $this->link_active,
+            'link_open_in_new_tab' => $this->link_open_in_new_tab,
+            'link_button_icon' => $this->link_button_icon,
+            'link_button_icon_color' => $this->link_button_icon_color,
         ];
     }
 }
