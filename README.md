@@ -32,7 +32,7 @@ A scoped banner is only visible on the selected resource pages.
 - **Render Location Control**: Select the desired locations where your banners will be displayed within your
   application.
 - **Programmatic Banner Creation**: Utilize the BannerManager Facade to create banners programmatically.
-- **Links**: Add links to your banners to direct users to specific pages.
+- **Links (v0.1.0 and higher)**: Add links to your banners to direct users to specific pages.
 
 ## Getting started
 
